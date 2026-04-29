@@ -42,11 +42,12 @@ class ShortsBlockerService : AccessibilityService() {
     private fun containsShortsNode(node: AccessibilityNodeInfo, depth: Int): Boolean {
         if (depth > 8) return false
 
+        // Match only full-screen Shorts player containers, not feed previews or nav tabs.
+        // "reel_player" and "reel_watch" appear exclusively inside the Shorts player;
+        // the generic "reel" substring also matches feed thumbnails and the nav tab icon.
         val resId = node.viewIdResourceName ?: ""
-        if (resId.contains("reel", ignoreCase = true)) return true
-
-        val cd = node.contentDescription?.toString() ?: ""
-        if (cd.equals("shorts", ignoreCase = true)) return true
+        if (resId.contains("reel_player", ignoreCase = true) ||
+            resId.contains("reel_watch", ignoreCase = true)) return true
 
         for (i in 0 until node.childCount) {
             val child = node.getChild(i) ?: continue
