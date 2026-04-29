@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShortBlocker</string>
+    <string name="service_label">ShortBlocker Accessibility Service</string>
+    <string name="service_description">Detects YouTube Shorts and navigates back automatically.</string>
+    <string name="status_enabled">Blocking active</string>
+    <string name="status_disabled">Blocking inactive — tap below to enable</string>
+    <string name="btn_open_settings">Open Accessibility Settings</string>
+    <string name="instructions">Enable ShortBlocker in Accessibility Settings to block YouTube Shorts.</string>
+</resources>
